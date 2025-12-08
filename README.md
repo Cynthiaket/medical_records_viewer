@@ -56,3 +56,34 @@ Slack notifications (GitHub Actions)
  4. The workflow uses `8398a7/action-slack@v3` to send a formatted message after CI runs.
 
 When configured, CI results (success/failure) will be posted to the chosen Slack channel.
+
+Release (versioning & Docker image)
+
+- The repository supports semantic versioning via `npm version`. Use one of these scripts locally to bump the package version and create an annotated Git tag:
+
+```bash
+# patch release (increments patch version)
+npm run release:patch
+
+# minor/major releases
+npm run release:minor
+npm run release:major
+```
+
+- After running `npm version ...`, push commits and tags to GitHub:
+
+```bash
+git push origin main --follow-tags
+```
+
+- The release workflow (`.github/workflows/release.yml`) triggers on tags matching `v*.*.*`. When a tag is pushed the workflow will:
+	- Build multi-arch Docker images using `docker/build-push-action`.
+	- Push images to the Docker registry configured by repository secrets: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`, and `DOCKERHUB_REPO` (format: `username/repo`).
+	- Create a GitHub Release for the tag.
+
+- To enable Docker image publishing, add the following repository secrets in GitHub:
+	- `DOCKERHUB_USERNAME` — your Docker Hub username (or registry username)
+	- `DOCKERHUB_TOKEN` — a Docker Hub access token (or password)
+	- `DOCKERHUB_REPO` — full image name, e.g. `myuser/medical-records-viewer`
+
+Once those secrets are configured, pushing a tag like `v1.2.3` will produce a Docker image `myuser/medical-records-viewer:v1.2.3` and `:latest` on Docker Hub and create a GitHub Release.
