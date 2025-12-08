@@ -38,11 +38,67 @@ jobs:
     if: always()
     steps:
       - uses: actions/checkout@v4
-      - name: Notify Slack (formatted)
-        uses: 8398a7/action-slack@v3
-        with:
-          # compute overall status: success only when both dependent jobs succeeded
-          status: ${{ (needs['build-and-test'].result == 'success' && needs['docker-build'].result == 'success') && 'success' || 'failure' }}
-          fields: repo,commit,author,workflow
+      - name: Notify Slack (All Conditions)
+        if: always()
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          STATUS: ${{ (needs['build-and-test'].result == 'success' && needs['docker-build'].result == 'success') && 'success' || 'failure' }}
+          BRANCH: ${{ github.ref_name }}
+          AUTHOR: ${{ github.actor }}
+          WORKFLOW: ${{ github.workflow }}
+          COMMIT: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+          SERVER_URL: ${{ github.server_url }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK" ]; then
+            STATUS="$STATUS"
+            BRANCH="$BRANCH"
+            AUTHOR="$AUTHOR"
+            WORKFLOW="$WORKFLOW"
+            COMMIT="$COMMIT"
+            RUN_ID="$RUN_ID"
+            REPO="$REPO"
+            SERVER_URL="$SERVER_URL"
+
+            # Determine emoji based on status
+            case "$STATUS" in
+              success)
+                EMOJI=":white_check_mark:"
+                COLOR="good"
+                ;;
+              failure)
+                EMOJI=":x:"
+                COLOR="danger"
+                ;;
+              cancelled)
+                EMOJI=":warning:"
+                COLOR="warning"
+                ;;
+              *)
+                EMOJI=":grey_question:"
+                COLOR="#808080"
+                ;;
+            esac
+
+            # Try to extract Jest test summary or coverage if present
+            TEST_RESULTS="Unknown"
+            if [ -f coverage/lcov-report/index.html ]; then
+              # crude extraction: count of tests (may vary by reporter)
+              TEST_RESULTS=$(grep -oP '(?<=<span class="strong">)[0-9]+' coverage/lcov-report/index.html | head -n 1)
+              if [ -z "$TEST_RESULTS" ]; then TEST_RESULTS="Unknown"; fi
+            fi
+
+            # Extract coverage % if present in coverage report
+            COVERAGE="Unknown"
+            if [ -f coverage/lcov-report/index.html ]; then
+              COVERAGE=$(grep -oP 'All files[ ]\|\s\K[0-9]{1,3}\.?[0-9]*' coverage/lcov-report/index.html | head -n 1)
+              if [ -z "$COVERAGE" ]; then COVERAGE="Unknown"; fi
+            fi
+
+            PAYLOAD="{\"attachments\":[{\"color\":\"$COLOR\",\"title\":\"$EMOJI CI Pipeline - $STATUS\",\"fields\":[{\"title\":\"Workflow\",\"value\":\"$WORKFLOW\",\"short\":true},{\"title\":\"Branch\",\"value\":\"$BRANCH\",\"short\":true},{\"title\":\"Author\",\"value\":\"$AUTHOR\",\"short\":true},{\"title\":\"Commit\",\"value\":\"$COMMIT\",\"short\":true},{\"title\":\"Tests\",\"value\":\"$TEST_RESULTS executed\",\"short\":true},{\"title\":\"Coverage\",\"value\":\"$COVERAGE%\",\"short\":true}],\"actions\":[{\"type\":\"button\",\"text\":\"View Logs\",\"url\":\"$SERVER_URL/$REPO/actions/runs/$RUN_ID\"}]}]}"
+
+            curl -s -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK" || true
+          else
+            echo "No Slack webhook configured."
+          fi
