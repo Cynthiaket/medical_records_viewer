@@ -45,3 +45,14 @@ DevOps / Monitoring
 
 - Add logs for uploads and authentication in production.
 - Use a monitoring stack (Prometheus + Grafana) and a log aggregator (ELK or Loki) for metrics and logs.
+
+Slack notifications (GitHub Actions)
+
+- The CI workflow can post build status to Slack. Create an Incoming Webhook in your Slack workspace and add the webhook URL as a repository secret named `SLACK_WEBHOOK_URL`.
+- Steps to configure:
+	1. In Slack, go to **Settings & administration → Manage apps** and add **Incoming Webhooks**.
+ 2. Create a new Incoming Webhook for the channel you want, copy the webhook URL.
+ 3. In your GitHub repo, go to **Settings → Secrets and variables → Actions → New repository secret** and create `SLACK_WEBHOOK_URL` with the webhook value.
+ 4. The workflow uses `8398a7/action-slack@v3` to send a formatted message after CI runs.
+
+When configured, CI results (success/failure) will be posted to the chosen Slack channel.

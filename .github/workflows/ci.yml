@@ -37,11 +37,12 @@ jobs:
     needs: [build-and-test, docker-build]
     if: always()
     steps:
-      - name: Notify Slack (if configured)
+      - uses: actions/checkout@v4
+      - name: Notify Slack (formatted)
+        uses: 8398a7/action-slack@v3
+        with:
+          # compute overall status: success only when both dependent jobs succeeded
+          status: ${{ (needs['build-and-test'].result == 'success' && needs['docker-build'].result == 'success') && 'success' || 'failure' }}
+          fields: repo,commit,author,workflow
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-          STATUS: ${{ job.status }}
-        run: |
-          if [ -z "$SLACK_WEBHOOK" ]; then echo "No SLACK_WEBHOOK configured"; exit 0; fi
-          payload=$(jq -n --arg status "$STATUS" '{text: ("CI status: " + $status + " for repo: " + env.GITHUB_REPOSITORY)}')
-          curl -s -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK"
