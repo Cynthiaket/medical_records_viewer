@@ -1,0 +1,259 @@
+{
+  "patients": [
+    {
+      "id": "pat-1765201383438",
+      "name": "Alice Smith",
+      "dob": "1980-03-12"
+    },
+    {
+      "id": "pat-1765201398963",
+      "name": "Bob Johnson",
+      "dob": "1972-07-01"
+    },
+    {
+      "id": "pat-1765201676415",
+      "name": "Carol Lee",
+      "dob": "1995-11-20"
+    },
+    {
+      "id": "pat-1765201683921",
+      "name": "David Kim",
+      "dob": "1965-05-05"
+    },
+    {
+      "id": "pat-1765201820075",
+      "name": "Eve Torres",
+      "dob": "1988-09-09"
+    },
+    {
+      "id": "pat-1765201826003",
+      "name": "Frank Wright",
+      "dob": "1979-02-14"
+    },
+    {
+      "id": "pat-1765201909214",
+      "name": "Grace Park",
+      "dob": "1992-12-01"
+    },
+    {
+      "id": "pat-1765201914358",
+      "name": "Hank Miller",
+      "dob": "1983-06-30"
+    },
+    {
+      "id": "pat-1765202023187",
+      "name": "Ivy Chen",
+      "dob": "2000-08-15"
+    },
+    {
+      "id": "pat-1765202758837",
+      "name": "Test Patient",
+      "dob": "1990-01-01"
+    },
+    {
+      "id": "pat-1765203367205",
+      "name": "Test Patient",
+      "dob": "1990-01-01"
+    },
+    {
+      "id": "pat-1765203376580",
+      "name": "Test Patient",
+      "dob": "1990-01-01"
+    },
+    {
+      "id": "pat-1765203488768",
+      "name": "Test Patient",
+      "dob": "1990-01-01"
+    },
+    {
+      "id": "pat-1765203565029",
+      "name": "deborah",
+      "dob": "2000-12-12"
+    },
+    {
+      "id": "pat-1765204935135",
+      "name": "deborah",
+      "dob": "2000-12-12"
+    }
+  ],
+  "records": [
+    {
+      "id": "rec-1765201383496",
+      "patientId": "pat-1765201383438",
+      "conditions": [
+        "hypertension"
+      ],
+      "lastVisit": "2025-11-10"
+    },
+    {
+      "id": "rec-1765201399027",
+      "patientId": "pat-1765201398963",
+      "conditions": [
+        "diabetes"
+      ],
+      "lastVisit": "2025-10-24"
+    },
+    {
+      "id": "rec-1765201676506",
+      "patientId": "pat-1765201676415",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-09-12"
+    },
+    {
+      "id": "rec-1765201683987",
+      "patientId": "pat-1765201683921",
+      "conditions": [
+        "hyperlipidemia"
+      ],
+      "lastVisit": "2025-08-03"
+    },
+    {
+      "id": "rec-1765201820170",
+      "patientId": "pat-1765201820075",
+      "conditions": [
+        "allergy"
+      ],
+      "lastVisit": "2025-07-22"
+    },
+    {
+      "id": "rec-1765201826063",
+      "patientId": "pat-1765201826003",
+      "conditions": [
+        "migraine"
+      ],
+      "lastVisit": "2025-06-05"
+    },
+    {
+      "id": "rec-1765201909268",
+      "patientId": "pat-1765201909214",
+      "conditions": [
+        "eczema"
+      ],
+      "lastVisit": "2025-05-01"
+    },
+    {
+      "id": "rec-1765201914396",
+      "patientId": "pat-1765201914358",
+      "conditions": [
+        "arthritis"
+      ],
+      "lastVisit": "2025-04-11"
+    },
+    {
+      "id": "rec-1765202023265",
+      "patientId": "pat-1765202023187",
+      "conditions": [
+        "flu"
+      ],
+      "lastVisit": "2025-03-18"
+    },
+    {
+      "id": "rec-1765202758899",
+      "patientId": "pat-1765202758837",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-12-08"
+    },
+    {
+      "id": "rec-1765203367270",
+      "patientId": "pat-1765203367205",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-12-08"
+    },
+    {
+      "id": "rec-1765203376645",
+      "patientId": "pat-1765203376580",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-12-08"
+    },
+    {
+      "id": "rec-1765203488883",
+      "patientId": "pat-1765203488768",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-12-08"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "asg-1765201383515",
+      "recordId": "rec-1765201383496",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T13:43:03.515Z"
+    },
+    {
+      "id": "asg-1765201399054",
+      "recordId": "rec-1765201399027",
+      "doctor": "Dr. Who",
+      "medication": "Metformin",
+      "notes": "",
+      "assignedAt": "2025-12-08T13:43:19.054Z"
+    },
+    {
+      "id": "asg-1765201676535",
+      "recordId": "rec-1765201676506",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T13:47:56.535Z"
+    },
+    {
+      "id": "asg-1765201684037",
+      "recordId": "rec-1765201683987",
+      "doctor": "Dr. Who",
+      "medication": "Statin",
+      "notes": "",
+      "assignedAt": "2025-12-08T13:48:04.037Z"
+    },
+    {
+      "id": "asg-1765201820214",
+      "recordId": "rec-1765201820170",
+      "doctor": "Dr. Who",
+      "medication": "Antihistamine",
+      "notes": "",
+      "assignedAt": "2025-12-08T13:50:20.214Z"
+    },
+    {
+      "id": "asg-1765202758940",
+      "recordId": "rec-1765202758899",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T14:05:58.940Z"
+    },
+    {
+      "id": "asg-1765203367307",
+      "recordId": "rec-1765203367270",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T14:16:07.307Z"
+    },
+    {
+      "id": "asg-1765203376708",
+      "recordId": "rec-1765203376645",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T14:16:16.708Z"
+    },
+    {
+      "id": "asg-1765203488928",
+      "recordId": "rec-1765203488883",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-08T14:18:08.928Z"
+    }
+  ]
+}

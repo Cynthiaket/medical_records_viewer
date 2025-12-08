@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Upload Document</title></head>
+  <body>
+    <h1>Upload Health Document</h1>
+    <p>Log in as patient first (use `login_patient.html`).</p>
+    <form id="upload" enctype="multipart/form-data">
+      <input type="file" name="file" required />
+      <button>Upload</button>
+    </form>
+    <pre id="out"></pre>
+    <script>
+      document.getElementById('upload').addEventListener('submit', async e=>{
+        e.preventDefault();
+        const token = localStorage.getItem('mrv_token');
+        if (!token) return document.getElementById('out').textContent = 'Please login first';
+        const fd = new FormData(e.target);
+        const res = await fetch('/api/documents', {method:'POST', headers:{'Authorization':'Bearer '+token}, body: fd});
+        document.getElementById('out').textContent = await res.text();
+      });
+    </script>
+  </body>
+</html>

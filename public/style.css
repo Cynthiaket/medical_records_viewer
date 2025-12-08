@@ -1,0 +1,30 @@
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f7f8fb}
+.container{max-width:1100px;margin:28px auto;padding:20px;background:linear-gradient(180deg,#ffffff,#fbfdff);border-radius:10px;box-shadow:0 6px 18px rgba(15,30,50,0.06)}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #eef3fb}
+.header-left .brand{margin:0;font-size:20px;color:#023e8a}
+.header-right{display:flex;align-items:center;gap:12px}
+.user-status{font-size:13px;color:#334155;background:#eef2ff;padding:6px 10px;border-radius:6px;border:1px solid #e0e7ff}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav-btn{background:#0b63b1;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-weight:600}
+.nav-btn.active{background:#084c86}
+.page{padding:18px}
+.hidden{display:none}
+form{margin:12px 0}
+label{display:block;margin:8px 0;color:#102a43}
+input[type="text"], input[type="date"], input[type="file"]{padding:10px;border:1px solid #e2e8f0;border-radius:6px;width:100%;max-width:360px}
+button{background:#0b63b1;color:white;border:none;padding:8px 14px;border-radius:6px;cursor:pointer}
+pre{background:#f8fafc;padding:10px;border-radius:8px;overflow:auto}
+.records{width:100%;border-collapse:collapse;margin-top:12px;background:#fff;border-radius:6px;overflow:hidden}
+.records th, .records td{border-bottom:1px solid #f1f5f9;padding:12px;text-align:left}
+.records thead{background:linear-gradient(90deg,#f8fbff,#f1f6ff)}
+.records tbody tr:hover{background:#fbfdff}
+.no-data{color:#6b7280;padding:12px}
+footer{margin-top:18px;color:#556069;font-size:13px}
+
+@media (max-width:720px){
+	.container{margin:12px;padding:12px}
+	.header-right{flex-direction:column;align-items:flex-end;gap:6px}
+	.nav{width:100%;justify-content:space-between}
+	.nav-btn{padding:8px}
+	.records th, .records td{padding:8px}
+}

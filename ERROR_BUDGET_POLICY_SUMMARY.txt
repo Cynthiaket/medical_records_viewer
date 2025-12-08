@@ -1,0 +1,2 @@
+Availability SLO: 99.9% (error budget 0.1% -> ~43.2 minutes/month)
+Actions at thresholds: 25%, 50%, 100% consumption with corresponding responses.

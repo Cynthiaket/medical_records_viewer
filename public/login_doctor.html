@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Doctor Login</title></head>
+  <body>
+    <h1>Doctor Login</h1>
+    <form id="login">
+      <label>Doctor name: <input name="doctor" required></label>
+      <button>Login</button>
+    </form>
+    <pre id="out"></pre>
+    <script>
+      document.getElementById('login').addEventListener('submit', async e=>{
+        e.preventDefault();
+        const doctor = e.target.doctor.value;
+        const res = await fetch('/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({role:'doctor',doctor})});
+        const j = await res.json();
+        if (j.token) {
+          localStorage.setItem('mrv_token', j.token);
+          localStorage.setItem('mrv_user', JSON.stringify(j.user));
+          document.getElementById('out').textContent = 'Logged in';
+        } else {
+          document.getElementById('out').textContent = JSON.stringify(j);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Medical Records Viewer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <div class="header-left">
+          <h1 class="brand">Medical Records Viewer</h1>
+        </div>
+        <div class="header-right">
+          <nav class="nav">
+            <button data-route="home" class="nav-btn">Home</button>
+            <button data-route="login" class="nav-btn">Login</button>
+            <button data-route="records" class="nav-btn">Medical Records</button>
+            <button data-route="logout" class="nav-btn">Logout</button>
+          </nav>
+          <div id="user-status" class="user-status">Not logged in</div>
+        </div>
+      </header>
+
+      <main id="app">
+        <section id="home" class="page">
+          <h2>Doctor Dashboard</h2>
+          <p>Securely review patient medical records. Please log in to access patient data and assignments.</p>
+        </section>
+
+        <section id="login" class="page hidden">
+          <h2>Doctor Login</h2>
+          <form id="form-login">
+            <label>Doctor name: <input name="doctor" required></label><br>
+            <button>Login</button>
+          </form>
+          <pre id="login-out" class="output"></pre>
+        </section>
+
+        <section id="records" class="page hidden">
+          <h2>Medical Records</h2>
+          <div id="records-area">
+            <div id="records-controls"></div>
+            <div id="records-list">(no data)</div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <small>Demo app — not for production use.</small>
+      </footer>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

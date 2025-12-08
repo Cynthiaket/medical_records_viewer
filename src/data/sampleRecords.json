@@ -1,0 +1,16 @@
+[
+  {
+    "id": "rec-001",
+    "name": "Alice Smith",
+    "dob": "1980-03-12",
+    "conditions": ["hypertension"],
+    "lastVisit": "2025-11-10"
+  },
+  {
+    "id": "rec-002",
+    "name": "Bob Johnson",
+    "dob": "1972-07-01",
+    "conditions": ["diabetes", "hyperlipidemia"],
+    "lastVisit": "2025-10-24"
+  }
+]
