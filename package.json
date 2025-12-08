@@ -1,6 +1,6 @@
 {
   "name": "medical-records-viewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Medical Records Viewer - Node.js/Express example",
   "main": "src/index.js",
   "scripts": {
