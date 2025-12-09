@@ -74,6 +74,11 @@
       "id": "pat-1765204935135",
       "name": "deborah",
       "dob": "2000-12-12"
+    },
+    {
+      "id": "pat-1765296229595",
+      "name": "Test Patient",
+      "dob": "1990-01-01"
     }
   ],
   "records": [
@@ -180,6 +185,14 @@
         "asthma"
       ],
       "lastVisit": "2025-12-08"
+    },
+    {
+      "id": "rec-1765296229676",
+      "patientId": "pat-1765296229595",
+      "conditions": [
+        "asthma"
+      ],
+      "lastVisit": "2025-12-09"
     }
   ],
   "assignments": [
@@ -254,6 +267,14 @@
       "medication": "Inhaler",
       "notes": "",
       "assignedAt": "2025-12-08T14:18:08.928Z"
+    },
+    {
+      "id": "asg-1765296229697",
+      "recordId": "rec-1765296229676",
+      "doctor": "Dr. Who",
+      "medication": "Inhaler",
+      "notes": "",
+      "assignedAt": "2025-12-09T16:03:49.697Z"
     }
   ]
 }
